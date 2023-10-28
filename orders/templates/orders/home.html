@@ -1,0 +1,15 @@
+{% extends "orders/base.html" %}
+{% block content %}
+{% for order in orders %}
+ <article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ order.creator }}</a>
+      <small class="text-muted">{{ order.priority }}</small>
+    </div>
+    <h2><a class="article-title" href="{% url 'order-detail' order.id %}">{{ order.product_name }}</a></h2>
+  </div>
+</article>
+  
+{% endfor %}
+{% endblock content %}

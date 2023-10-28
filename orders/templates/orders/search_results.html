@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <form method="get" action="{% url 'search_orders' %}">
+        <input type="text" name="q" value="{{ request.GET.q }}">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if results %}
+        <ul>
+            {% for order in results %}
+                <li>{{ order.product_name }} - {{ order.priority }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>
